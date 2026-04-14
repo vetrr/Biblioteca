@@ -3,33 +3,28 @@ package application;
 import java.util.Locale;
 
 import entities.Hq;
-import entities.ItemBiblioteca;
-import entities.Livro;
 import entities.Usuario;
+import service.Biblioteca;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Locale.setDefault(Locale.US);
+        Biblioteca central = new Biblioteca();
 
-        System.out.println("------Imprimindo a classe ItemBiblioteca------");
-        ItemBiblioteca itemBibli = new ItemBiblioteca("Macaco-Aranha", 2000);
-        System.out.println(itemBibli);
-        System.out.println();
+        Usuario vitor = new Usuario("Vitor Hugo", 151);
 
-        System.out.println("------Imprimindo a classe Hq------");
-        Hq quadrinho = new Hq("Macaco-Aranha", 2000, "Primataria", "Rick");
-        System.out.println(quadrinho);
-        System.out.println();
+        Hq hqAranha = new Hq("Macaco-Aranha", 2000, "Primataria", "Rick");
+
+        System.out.println("--- ANTES DO EMPRÉSTIMO ---");
+        System.out.println("O livro está: " + hqAranha.getStatus()); 
+
+        System.out.println("\n--- REALIZANDO A OPERAÇÃO ---");
+        central.emprestaItem(vitor, hqAranha);
+
+        System.out.println("\n--- DEPOIS DO EMPRÉSTIMO ---");
+        System.out.println("O livro agora está: " + hqAranha.getStatus());
         
-        System.out.println("------Imprimindo o Livro------");
-        Livro livro1 = new Livro("Livro", 2015, 131415, 235);
-        System.out.println(livro1);
-        System.out.println();
-
-        System.out.println("------Imprimindo o Usuario------");
-        Usuario usuario = new Usuario("Vitor Hugo", 151);
-        System.out.println(usuario);
-        System.out.println();
-        
+        System.out.println("\n--- TENTANDO EMPRESTAR DE NOVO ---");
+        central.emprestaItem(vitor, hqAranha);
     }
 }
