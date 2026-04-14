@@ -1,10 +1,17 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import service.Biblioteca;
 
 public class Usuario {
     private String nome;
     private int id;
+
+    private List <ItemBiblioteca> itensEmprestados = new ArrayList<>();
+
+
 
     public Usuario(String nome, int id) {
         this.nome = nome;
@@ -14,12 +21,13 @@ public class Usuario {
     public String getNome() {
         return nome;
     }
+
     public int getId() {
         return id;
     }
 
-    public void emprestaLivro(){
-        
+    public void adicionarItem(ItemBiblioteca novoItem){
+        itensEmprestados.add(novoItem);
     }
 
     @Override

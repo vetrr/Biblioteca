@@ -7,11 +7,14 @@ public class ItemBiblioteca{
     private int anoPublicacao;
     Status status;
 
-
-
     public ItemBiblioteca(String titulo, int anoPublicacao){
         this.titulo=titulo;
         this.anoPublicacao=anoPublicacao;
+        this.status=Status.DISPONIVEL;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public String getTitulo() {
